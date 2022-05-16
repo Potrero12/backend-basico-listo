@@ -7,7 +7,7 @@
     "start": "node app"
   },
   "keywords": [],
-  "author": "Julian",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
