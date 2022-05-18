@@ -101,14 +101,9 @@ const actualizarUsuario = async(req, res = response) => {
 const borrarUsuarios = async(req, res = response) => {
 
     const id = req.params.id;
+    // const uid = req.uid;
 
     try {
-
-        // // borrarlo fisicamente de la db
-        // const usuario = await Usuario.findByIdAndDelete(id);
-        // res.status(200).json({
-        //     usuario
-        // });
 
         // cambiando el estado del usuario - la forma correcta del uso
         const usuario = await Usuario.findByIdAndUpdate(id, {estado: false});
