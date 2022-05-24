@@ -20,7 +20,7 @@ const existeUsuarioPorId = async(id) => {
     // verificar si ya existe el correo
     const existeUsuario = await Usuario.findById(id)
     if(!existeUsuario){
-        throw new Error(`EL id no existe ${id}`)
+        throw new Error(`EL id no existe ${id} usuario`)
     }
 }
 
@@ -28,7 +28,7 @@ const existeCategoriaPorId = async(id) => {
     // verificar si ya existe el correo
     const existeCategoria = await Categoria.findById(id)
     if(!existeCategoria){
-        throw new Error(`EL id no existe ${id}`)
+        throw new Error(`EL id no existe ${id} categoria`)
     }
 }
 
@@ -36,8 +36,20 @@ const existeProductoPorId = async(id) => {
     // verificar si ya existe el correo
     const existeProducto = await Producto.findById(id)
     if(!existeProducto){
-        throw new Error(`EL id no existe ${id}`)
+        throw new Error(`EL id no existe ${id} producto`)
     }
+}
+
+// validar colecciones permitidas
+const coleccionesPermitidas = async(coleccion = '', colecciones = []) => {
+
+    const incluida = colecciones.includes(coleccion);
+    if(!incluida) {
+        throw new Error(`La coleccion ${coleccion} no es permitida, ${colecciones}`)
+    }
+
+    return true;
+
 }
 
 module.exports = {
@@ -45,5 +57,6 @@ module.exports = {
     emailExiste,
     existeUsuarioPorId,
     existeCategoriaPorId,
-    existeProductoPorId
+    existeProductoPorId,
+    coleccionesPermitidas
 }
